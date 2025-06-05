@@ -13,7 +13,7 @@ entity Equipments : cuid, managed {
     description : String(200);
     manufacturing : String(100);
     tasks        : Composition of many Tasks on tasks.equipment = $self; //$self refers to Equipment & CRUD opertions can be performed with Composition
-    issues       : Composition of many Issues on issues.equipment = $self //1:n cardinality use Composition
+    issues       : Composition of many Issues on issues.equipment = $self;//1:n cardinality use Composition
 }
 
 entity Tasks: cuid, managed {
@@ -22,20 +22,20 @@ entity Tasks: cuid, managed {
     priority: Association to TaskPriority;
     status: Association to TaskStatus;
     assignedTo: Association to Employees; //cardinality 1:1 , use Association
-    equipment: Association to Equipments
+    equipment: Association to Equipments;
 }
 
 entity Issues: cuid, managed{
     description: String(250);
     reportedBy: Association to Employees;
     equipment: Association to Equipments;
-    issueStatus: Association to IssueStatus
+    issueStatus: Association to IssueStatus;
 }
 entity  Employees : cuid, managed {
     name: String(50);
     username: String(50);
     email: String(50);
-    role: Association to Roles
+    role: Association to Roles;
 } 
 
 ///table for equipment TYPES
